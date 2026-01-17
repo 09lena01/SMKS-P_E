@@ -84,51 +84,189 @@
 	\newpage
 	\pagenumbering{arabic}
 	\chapter{Einleitung}
-	In diesem Versuch wird mithilfe von DNA-Strängen der Abstand \(R_{DA}\) zwischen zwei Basenpaaren bestimmt. Definierten Positionen der DNA-Stränge wurden mit den Fluorophoren Alexa488 (Donor) und Cy5 (Akzeptor) markiert. Hierbei wird der Donorfarbstoff optisch angeregt und die entstehende Fluoreszenz wird detektiert. Ein Teil der Anregungsenergie des Donors wird über den Förster-Resonanz-Energietransfer (FRET) strahlungslos auf den Akzeptor übertragen, wodurch dieser ebenfalls fluoresziert. Auf diese Weise kann die Energieübertragung direkt beobachtet werden.  
+	In diesem Versuch wird mithilfe von DNA-Strängen der Försterabstand $R_0$ und der Abstand $R_{DA}$ zwischen zwei Basenpaaren bestimmt. Definierten Positionen der DNA-Stränge wurden mit den Fluorophoren Alexa488 (Donor) und Cy5 (Akzeptor) markiert. Im Versuch wird der Donorfarbstoff optisch angeregt und die entstehende Fluoreszenz wird detektiert. Ein Teil der Anregungsenergie des Donors wird über den Förster-Resonanz-Energietransfer (FRET) strahlungslos auf den Akzeptor übertragen, wodurch dieser ebenfalls fluoresziert. Auf diese Weise kann die Energieübertragung direkt beobachtet werden.  
 	
 	FRET ist nur möglich, wenn das Emissionsspektrum des Donors und das Absorptionsspektrum des Akzeptors ausreichend überlappen. Die Übertragung beruht auf einer Dipol-Dipol-Wechselwirkung zwischen Donor und Akzeptor. In der Regel erfolgt der Transfer zwischen Singulett-Zuständen (S$_1$ des Donors, S$_0$ des Akzeptors) und wird daher als Singulett-Singulett-Transfer bezeichnet.  
 	
-	Die Transfereffizienz \(E\) gibt an, welcher Anteil der angeregten Donormoleküle ihre Energie erfolgreich an den Akzeptor überträgt. Da \(E\) stark vom Abstand \(R_{DA}\) abhängt, lassen sich aus den gemessenen Fluoreszenzspektren quantitative Informationen über den Abstand zwischen Donor und Akzeptor gewinnen.	
+	Die Transfereffizienz $E$ gibt an, welcher Anteil der angeregten Donormoleküle ihre Energie erfolgreich an den Akzeptor überträgt. Da $E$ stark vom Abstand $R_{DA}$ abhängt, lassen sich aus den gemessenen Fluoreszenzspektren quantitative Informationen über den Abstand zwischen Donor und Akzeptor gewinnen.	
 	{\let\clearpage\relax\chapter{Experimentalteil}}
 	\section{Versuchsablauf}
 	Die bereitgestellten Proben wurden entsprechend des Skripts vermessen.\cite{Skript} 
 	\section{Messergebnisse \& Auswertung}
-	\subsection{Korrektur der Spektren}
+	\subsection{Korrektur der Spektren}\label{subsec:Korrektur}
 	Die Korrektur der Spektren wurden durch Abzug der Messwerte der Lösemittelmessungen von jenen der Probelösungen durchgeführt.
-	\subsection{Berechnung von $R_0$}
+	\subsection{Berechnung von $R_0$}\label{subsec:R0}
+	In diesem Abschnitt gilt es den Förster-Radius des vorliegenden Donor-Akzeptor-Systems zu bestimmen. Dazu wird das Maximum der Untergrund-korrigierten Spektren aus \autoref{subsec:Korrektur} zunächst auf 1 normiert anhand der folgenden Formel.
 	\begin{equation}
-		\mathrm{A_{norm}=\frac{A_{mess}-MIN(A_i)}{MAX(A_i)-MIN(A_i)}}\label{eq:Norm_min_max}
+		\mathrm{F_{norm}=\frac{F_{mess}-MIN(F_i)}{MAX(F_i)-MIN(F_i)}}\label{eq:Norm_min_max}
 	\end{equation}
+	Für die Messung $\mathrm{D_{em}}$ bei einer Wellenlänge von \SI{480}{\nm} ergibt sich somit folgender Wert:
+	\begin{equation*}
+		\mathrm{F_{norm,D_{em}}}(480\,\mathrm{nm})=\frac{30,509-12008}{12008-(-787)}=0,0068
+	\end{equation*}
+	Die Normierung wird anschließend bei allen weiteren Wellenlängen durchgeführt und für jede Messreihe. Die normierten Fluoreszenz- und Anregungsspektren des Lösungsmittels und der Proben sind in den folgenden Abbildungen dargestellt.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\textwidth]{6.1.1a.pdf}
 		\caption[Fluoreszenz- \& Anregungsspektren des Lösemittels.]{Fluoreszenz- \& Anregungsspektren des Lösemittels, Messungen für $\mathrm{D_{em}}$ (\textcolor{green}{\rule[0.5ex]{1em}{0.5pt}}),  $\mathrm{D_{ex}}$ (\textcolor{blue}{\rule[0.5ex]{1em}{0.5pt}}), $\mathrm{A_{em}}$ (\textcolor{violet}{\rule[0.5ex]{1em}{0.5pt}}) \& $\mathrm{A_{ex}}$ (\textcolor{black}{\rule[0.5ex]{1em}{0.5pt}}).}
-	\end{figure}
+		\label{fig:LM_6.1}
+	\end{figure}\noindent
+	Die Maxima der Lösemittelspektren liegen bei den folgenden Wellenlängen:
+	\begin{table}[H]
+		\centering
+		\caption{Wellenlängen der Fluoreszenz- \& Anregungsspektren des Lösemitteln, bei denen die Intensität maximal ist.}
+		\label{tab:LM_lambdamax}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Messung & $\mathrm{D_{em}}$ & $\mathrm{D_{ex}}$ & $\mathrm{A_{em}}$ & $\mathrm{A_{ex}}$ \\ \hline
+			$\lambda_{\mathrm{max}}$ [nm] & 517 & 491 & 662 & 645 \\ \hline
+		\end{tabular}
+	\end{table}\noindent
+	Im Vergleich der Fluoreszenz- und Anregungsspektren des Donors oder des Akzeptors ist auffällig, dass sich das Maximum im Fluoreszenzspektrum zu größeren Wellenlängen verschiebt. Dies geschieht aufgrund von molekularen Bewegungen, welche durch die Anregung teilweise hervorgerufen werden. Für FRET-Messungen ist ein Überlapp des Anregungsspektrums des Akzeptors mit dem Fluoreszenzspektrum des Donors notwendig. Wie in \autoref{fig:LM_6.1} ersichtlich, ist dies bei dem vorliegenden Fluorophoren der Fall.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\textwidth]{6.1.1b.pdf}
 		\caption[Fluoreszenz- \& Anregungsspektren der Proben.]{Fluoreszenz- \& Anregungsspektren der Proben, Messungen für $\mathrm{LF\,D_{em}}$ (\textcolor{green}{\rule[0.5ex]{1em}{0.5pt}}) \&  $\mathrm{HF\,D_{em}}$ (\textcolor{blue}{\rule[0.5ex]{1em}{0.5pt}})).}
-	\end{figure}
+	\end{figure}\noindent
+	Bei den Spektren der Proben ist zunächst ein simultaner Verlauf der Kurven zu beobachten. Veränderungen der beiden Spektren sind jedoch etwa ab \SI{630}{\nm} erkennbar, wobei das folgende lokale Minimum im Bereich von Wellenlängen von \SIrange{665}{667}{\nm} in der HF-Probe eine höhere Intensität aufweist als die LF-Probe.
+	
+	Um den Förster Radius zu bestimmen, werden lediglich die Spektren aus \autoref{fig:LM_6.1} benötigt, wofür das Überlappungsintegral $J$ bestimmt werden muss. Dazu werden die Intensitäten der Puffer-korrigierten Anregungsspektren mithilfe eines Formfaktors normiert. Die Gleichung des Formfaktors lautet:
 	\begin{equation}
 		f_{D/A}(\lambda)=\frac{F_{D/A}}{\sum F_{D/A}}\label{eq:korr_Fluor_lambda}
 	\end{equation}
+	Beispielhaft dargestellt ist die Normierung der Intensität an $\mathrm{D_{em}}$ bei \SI{480}{\nm}:
+	\begin{equation*}
+		f_D(480\,\mathrm{nm})=\frac{30,509}{5964884}=5,11\cdot 10^{-6}
+	\end{equation*}
+	Die Anregungsspektren des Donors und Akzeptors wurden auf das Maximum normiert und mit den jeweiligen Extinktionskoeffizienten multipliziert.\cite{Skript}
+	\begin{align}
+		\varepsilon(\lambda)_{D/A}&=\frac{A_{\mathrm{Alexa488/Cy5}}}{MAX(A_i)}\varepsilon_{\mathrm{Alexa488/Cy5}}\label{eq:korr_Extinktionskoeff}\\
+		\varepsilon_D&=\varepsilon_{\mathrm{Alexa488}}=71000\,\mathrm{M^{-1}cm^{-1}}\nonumber\\
+		\varepsilon_A&=\varepsilon_{\mathrm{Cy5}}=250000\,\mathrm{M^{-1}cm^{-1}}\nonumber
+	\end{align}
+	Für das Donor Emissionsspektrum gibt sich daraus bei $\lambda=480\,\mathrm{nm}$ folgender Wert:
+	\begin{equation*}
+		\varepsilon(480\,\mathrm{nm})_{D}=\frac{2305,650}{9879883,078}\cdot 71000\,\mathrm{M^{-1}cm^{-1}}=641,053\,\mathrm{M^{-1}cm^{-1}}
+	\end{equation*}
+	Daraus lässt sich nun das Überlappungsintegral $J$ berechnen.
 	\begin{equation}
-		\varepsilon(\lambda)_{D/A}=\frac{A_{\mathrm{Alexa488/Cy5}}}{MAX(A_i)}\varepsilon_{\mathrm{Alexa488/Cy5}}\label{eq:korr_Extinktionskoeff}
+		J=\int_{480}^{660}f_D(\lambda)\varepsilon(\lambda)_A\lambda^4\,d\lambda\label{eq:J}
 	\end{equation}
-	\begin{equation}
-		J=\int_{480}^{660}f_D(\lambda)\varepsilon(\lambda)_A\lambda^4\,d\lambda\label{eq:spektr_Überlappungsint}
-	\end{equation}
+	\begin{align*}
+		J(480\,\mathrm{nm})&=5,11\cdot 10^{-6}\cdot 641,053\,\mathrm{M^{-1}cm^{-1}}\cdot (480\,\mathrm{nm})^4=216597441,9\,\mathrm{M^{-1}cm^{-1}nm^4}\\
+		J(481\,\mathrm{nm})&=4396584440\,\mathrm{M^{-1}cm^{-1}nm^4}\\
+		A(481-480\,\mathrm{nm})&=\frac{216597441,9\,\mathrm{M^{-1}cm^{-1}nm^4}+4396584440\,\mathrm{M^{-1}cm^{-1}nm^4}}{2}\cdot (481-480)\,\mathrm{nm}\\
+		&=2306590941\,\mathrm{M^{-1}cm^{-1}nm^5}\\
+		J&=\sum_i A(\Delta\lambda_i)=1,602\cdot 10^{15}\,\mathrm{M^{-1}cm^{-1}nm^5}
+	\end{align*}
+	Der Försterradius kann nun über \autoref{eq:R0} berechnet werden.
 	\begin{equation}
 		R_0=0,2108\sqrt[6]{\kappa^2\Phi_Dn^{-4}J}\label{eq:R0}
 	\end{equation}
+	Als Vorgabe wurden die Parameter wiefolgt definiert:
+	\begin{align*}
+		\kappa^2&=\frac{2}{3}\\
+		n&=1,333\\
+		\Phi_D(\mathrm{Alexa488})&=0,8
+	\end{align*}
+	Wodurch der Försterradius bei
+	\begin{equation*}
+		R_0=0,2108\AA\sqrt[6]{\frac{2}{3}\cdot 0,8\cdot 1,333^{-4}\cdot 1,602\cdot 10^{15}}=55,44\,\AA
+	\end{equation*}
+	liegt. Der Literaturwert liegt bei $R_0(\mathrm{Lit})=53\,\AA$, sodass die Abweichung vom Literaturwert folgenden Wert annimmt:\cite{Skript}
+	\begin{equation*}
+		\mathrm{Abweichung\,[\%]}: |\frac{53\,\AA-55,44\AA}{53\,\AA}|\cdot 100\,\%=4,6114\,\%
+	\end{equation*}
 	\subsection{Verhältnismethode}
-	
+	In diesem Abschnitt soll der Abstand zwischen Donor und Akzeptor $R_{DA}$ bestimmt werden. Dazu muss zunächst das Verhältnis der Gesamtdetektionseffizienten $\gamma$ bestimmt werden.
+	\begin{equation}
+		\gamma=\frac{\frac{F_A(\lambda_{emAmax})}{\int F_A(\lambda)\,d\lambda}\Phi_A}{\frac{F_D(\lambda_{emDmax})}{\int F_D(\lambda)\,d\lambda}\Phi_D}\label{eq:gamma}
+	\end{equation}
+	Die Fluoreszenzquantenausbeuten des Donors und Akzeptors sind gegeben durch\cite{Skript}
+	\begin{align*}
+		\Phi_D(\mathrm{Alexa488})&=0,8\\
+		\Phi_A(\mathrm{Cy5})&=0,32\mbox{.}
+	\end{align*}
+	$F_A(\lambda_{emAmax})$ und $F_D(\lambda_{emDmax})$ ergeben sich aus den Maxima der jeweiligen Puffer-korrigierten Fluoreszenzspektren:
+	\begin{align*}
+		F_A(\lambda_{emAmax})&=136714\\
+		F_D(\lambda_{emDmax})&=120008
+	\end{align*}
+	Die Integrale von $F_A(\lambda)$ und $F_D(\lambda)$ können analog dem Vorgehen bei \autoref{eq:J} der Puffer-korrigierten Fluoreszenzspektren berechnet werden.
+	\begin{align*}
+		\int F_A(\lambda)\,d\lambda&=5256161\\
+		\int F_D(\lambda)\,d\lambda&=5665472		
+	\end{align*}
+	Daraus ergibt sich nun $\gamma$:
+	\begin{equation*}
+		\gamma=\frac{\frac{136714}{5256161}0,8}{\frac{120008}{5665472}0,32}=0,4912
+	\end{equation*}
+	Das nun bestimmte Verhältnis der Gesamtdetektionseffizienten kann verwendet werden, um die Transfereffizienz $E$ zu bestimmen.
+	\begin{equation}
+		E=\frac{1}{a}\frac{1}{(1+\gamma\frac{F_G}{F_R})}
+	\end{equation}
+	Der Akzeptormarkierungsgrad $a$ wurden durch den Assistenten vorgegeben, mit $a(HF)=0,9$ und $a(LF)=1$. Die $F_G$-Werte entspechen den Maxima der jeweiligen Puffer-korrigierten Fluoreszenzspektren der Proben.
+	\begin{align*}
+		F_G(HF)&=103047\\
+		F_G(LF)&=99690		
+	\end{align*}
+	Um $F_R$ zu bestimmen, muss die extrahierte Akzeptorfluoreszenz bestimmt werden. Hierbei muss das Fluoreszenzsspektrum des Donors auf das Maximum der Probenspektren normiert und mit dem Maximum der Probenintensität multipliziert. Anschließend werden diese Intensitäten von den Probenspektren abgezogen. Die Intensitäten jener Spektren im Maximum entsprechen $F_R$.
+	\begin{align}
+		F_R(HF/LF)&=MAX(F_{DA}(\lambda_{exD},\lambda_{em})-\frac{F_{D}(\lambda_{exD},\lambda_{em})\cdot MAX(F_{DA}(\lambda_{exD},\lambda_{em}}{MAX(F_D)})
+	\end{align}
+	Für Probe HF entspricht $F_A(\lambda_{exD},\lambda_{em})$ für $\lambda=480\,\mathrm{nm}$
+	\begin{equation*}
+		F_A(HF)(480\,\mathrm{nm})=-95,49-0,006770\cdot 103047=-793,1		
+	\end{equation*}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{6.2.pdf}
+		\caption[Extrahierte Akzeptorfluoreszenz der Proben.]{Extrahierte Akzeptorfluoreszenz der Proben, Messungen für LF (\textcolor{green}{\rule[0.5ex]{1em}{0.5pt}}) \&  HF (\textcolor{blue}{\rule[0.5ex]{1em}{0.5pt}})).}
+	\end{figure}
+	Aus den Maxima ergeben sich die $F_R$-Werte.
+	\begin{align*}
+		F_R(HF)&=43210		\\
+		F_R(LF)&=17324	
+	\end{align*}
+	Nun sind alle Parameter bekannt, um die Transfereffizienz zu bestimmen:
+	\begin{align*}
+		E(HF)&=\frac{1}{0,9}\frac{1}{(1+0,4912\frac{103047}{43210})}=0,5117	\\
+		E(LF)&=0,2613		
+	\end{align*}
+	Anhand der Transfereffizienz und den in \autoref{subsec:R0} bestimmten Försterradius $R_0$ kann nun der Abstand zwischen Donor und Akzeptor $R_{DA}$ bestimmt werden.
+	\begin{align}
+		E&=\frac{R_0^6}{R_0^6+R_{DA}^6}\\
+		R_{DA}&=\sqrt[6]{\frac{R_0^6}{E}-R_0^6}\label{eq:RDA}\\
+		R_{DA}(HF)&=\sqrt[6]{\frac{(55,44\,\AA)^6}{0,5117}-(55,44\,\AA)^6}=55,01\,\AA\nonumber\\
+		R_{DA}(LF)&=65,93\,\AA		\nonumber
+	\end{align}
+	Die Literaturwerte betragen $R_{mpm}(\mathrm{HF,Lit})=46,4\,\AA$ und $R_{mpm}(\mathrm{LF,Lit})=66,1\,\AA$, wodurch sich Abweichungen von $18,56\,\%$ und $0,2628\,\%$ ergeben.
 	\subsection{3D-Modelle}
+	In den Berechnungen der $R_{DA}$-Werte ist nicht einbezogen, dass die Fluorophore an der DNA flexibel gekoppelt sind. Betrachtet man die Abstände jedoch als eine Fluorophor-Wolke, kann über die empirische Formel der sogenannten \glqq Wolkenkorrektur\grqq dieser Fakt einbezogen werden.
+	\begin{equation}
+		E_{mpm}=0,008+0,679\cdot E+1,470\cdot E^2-1,141\cdot E^3
+	\end{equation}
+	$E_{ia}$ entspricht hier den in vorherigen Unterabschnitt berechneten Transfereffizienten und $E_{mpm}$ entspricht der FRET-Effizienz für einen Abstand mittlerer Positionen. Anhand dieser Effizienzen lässt sich über \autoref{eq:RDA} der korrigierte Abstand ermitteln.
+	\begin{align*}
+		E_{mpm}(\mathrm{HF})&=0,008+0,679\cdot 0,5117+1,470\cdot 0,5117^2-1,141\cdot 0,5117^3=0,5875\\
+		R_{DA}(\mathrm{HF,korr})&=52,27\,\AA\\
+		E_{mpm}(\mathrm{LF})&=0,2655	\\
+		R_{DA}(\mathrm{LF,korr})&=65,69\,\AA
+	\end{align*}
+	Hier betragen die Abweichungen von der Literatur $12,65\,\%$ und $0,6172\,\%$.
 	\section{Diskussion \& Fehlerbetrachtung}
+	Der experimentell bestimmte Förster-Radius von $R_0 = 55,44\,\AA$ liegt mit einer Abweichung von 4,6~\% nahe am Literaturwert von 53~\AA. Dies zeigt, dass die Bestimmung des Überlappungsintegrals sowie die	Normierung der Spektren insgesamt konsistent durchgeführt wurden.
 	
-	\chapter{Zusammenfassung}
+	Die berechneten FRET-Effizienzen zeigen mit	$E({\mathrm{HF}}) = 0,5117$ und $E({\mathrm{LF}}) = 0,2613$ den erwarteten Trend, da der Donor-Akzeptor-Abstand der LF-Probe größer ist als der der HF-Probe. Entsprechend	ergeben sich für die unkorrigierten Abstände $R_{\mathrm{DA}}(HF) = 55,01\,\AA$ und	$R_{\mathrm{DA}}(LF) = 65,93\,\AA$. Während der LF-Wert sehr gut mit einer Abweichung von 0,2628~\% dem	Literaturwert übereinstimmt, ist die Abweichung mit 18,56~\% für HF deutlich größer.
 	
+	Ein wesentlicher Grund hierfür liegt in der Annahme starr fixierter Fluorophore. In	Realität sind Alexa488 und Cy5 über flexible Linker an die DNA gebunden, sodass ihre	effektiven Positionen eine räumliche Verteilung besitzen. Durch Anwendung der	Wolkenkorrektur werden diese Effekte teilweise berücksichtigt, wodurch sich die korrigierten Abstände auf	$R_{\mathrm{DA}}(\mathrm{HF,korr}) = 52,27\,\AA$ und	$R_{\mathrm{DA}}(\mathrm{LF,korr}) = 65,69\,\AA$ ändern und insbesondere für HF eine	bessere Übereinstimmung mit dem Literaturwert erreicht wird mit einer Abweichung von 12,65~\%.
+	
+	Weitere systematische Fehler entstehen durch die Annahmen $\kappa^2 = 2/3$ und	$n = 1,333$, da sowohl die Orientierung der Fluorophore als auch der effektive	Brechungsindex durch DNA und Puffer beeinflusst werden können. Zusätzlich	berücksichtigt die verwendete Verhältnismethode die direkte Anregung des Akzeptors	nicht vollständig. Da sich die Anregungsbereiche von Donor und Akzeptor überlappen,	trägt ein Teil der gemessenen Akzeptorfluoreszenz nicht zum FRET-Prozess bei, was die
+	Bestimmung von $F_R$ und damit der FRET-Effizienz verfälschen kann.
+	
+	Insgesamt liefern die Ergebnisse für die LF-Probe konsistente Abstände, während bei der HF-Probe die Fluorophor-Flexibilität und die Modellannahmen zu einer stärkeren Abweichung führen.
 	\listoffigures
+	{\let\clearpage\relax\listoftables}
 	\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
-	\printbibliography
+	{\let\clearpage\relax\printbibliography}
 \end{document}
